@@ -1,24 +1,67 @@
-# This is a template for a Python scraper on morph.io (https://morph.io)
-# including some code snippets below that you should find helpful
+__author__ = 'eugene'
 
-# import scraperwiki
-# import lxml.html
-#
-# # Read in a page
-# html = scraperwiki.scrape("http://foo.com")
-#
-# # Find something on the page using css selectors
-# root = lxml.html.fromstring(html)
-# root.cssselect("div[align='left']")
-#
-# # Write out to the sqlite database using scraperwiki library
-# scraperwiki.sqlite.save(unique_keys=['name'], data={"name": "susan", "occupation": "software developer"})
-#
-# # An arbitrary query against the database
-# scraperwiki.sql.select("* from data where 'name'='peter'")
+import scraperwiki
+from lxml import etree
+import lxml.html
+import string
+from datetime import datetime
+import csv
+import urllib
+import re
+import json
 
-# You don't have to do things with the ScraperWiki and lxml libraries.
-# You can use whatever libraries you want: https://morph.io/documentation/python
-# All that matters is that your final data is written to an SQLite database
-# called "data.sqlite" in the current working directory which has at least a table
-# called "data".
+def getJobCount(url):
+    
+    response = urllib.urlopen(url)
+    #print response.read()
+    j = json.loads(response.read())
+    return j['totalCount']
+
+
+
+urls = [
+      ['BA all', 'https://api.seek.com.au/v2/jobs/search?keywords=.net&graduateSearch=false&location=1002&isAreaUnspecified=false&salaryRange=100000-
+
+999999&salaryType=annual&dateRange=31']
+    , ['BA contract', 'https://api.seek.com.au/v2/jobs/search?keywords=.net&graduateSearch=false&location=1002&isAreaUnspecified=false&salaryRange=100000-
+
+999999&salaryType=annual&dateRange=31&worktype=244']
+    , ['BA perm', 'https://api.seek.com.au/v2/jobs/search?keywords=.net&graduateSearch=false&location=1002&isAreaUnspecified=false&salaryRange=100000-
+
+999999&salaryType=annual&dateRange=31&worktype=242']
+    ,  ['.net all', 'https://api.seek.com.au/v2/jobs/search?keywords=.net&graduateSearch=false&location=1002&isAreaUnspecified=false&salaryRange=100000-
+
+999999&salaryType=annual&dateRange=31']
+    , ['.net contract', 'https://api.seek.com.au/v2/jobs/search?keywords=.net&graduateSearch=false&location=1002&isAreaUnspecified=false&salaryRange=100000-
+
+999999&salaryType=annual&dateRange=31&worktype=244']
+    , ['.net perm', 'https://api.seek.com.au/v2/jobs/search?keywords=.net&graduateSearch=false&location=1002&isAreaUnspecified=false&salaryRange=100000-
+
+999999&salaryType=annual&dateRange=31&worktype=242']
+    , ['java all', 'https://api.seek.com.au/v2/jobs/search?
+
+keywords=java&hirerId=&hirerGroup=&page=1&classification=6281&subclassification=&graduateSearch=false&location=1002&salaryRange=100000-999999&salaryType=annual&dateRange=31']
+    , ['java contract', 'https://api.seek.com.au/v2/jobs/search?
+
+keywords=java&hirerId=&hirerGroup=&page=1&classification=6281&subclassification=&graduateSearch=false&location=1002&nation=&area=&isAreaUnspecified=false&worktype=244&salaryRange=10
+
+0000-999999&salaryType=annual&dateRange=31']
+    , ['java perm', 'https://api.seek.com.au/v2/jobs/search?
+
+keywords=java&hirerId=&hirerGroup=&page=1&classification=6281&subclassification=&graduateSearch=false&location=1002&nation=&area=&isAreaUnspecified=false&worktype=242&salaryRange=10
+
+0000-999999&salaryType=annual&dateRange=31']
+]
+
+extractedOn = datetime.strftime(datetime.now(), '%Y-%m-%d %H:%M:%S')
+
+for url in urls:
+
+    search = url[0]
+
+    # Save found data
+    scraperwiki.sqlite.save(unique_keys=['extracted_on','search'], data={
+        "extracted_on": extractedOn,
+        "search": suburb,
+	"count": getJobCount(url[1])
+        })
