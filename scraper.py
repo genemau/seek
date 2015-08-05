@@ -20,9 +20,9 @@ def getJobCount(url):
 
 
 urls = [
-      ['BA all', 'https://api.seek.com.au/v2/jobs/search?keywords=.net&graduateSearch=false&location=1002&isAreaUnspecified=false&salaryRange=100000-999999&salaryType=annual&dateRange=31']
-    , ['BA contract', 'https://api.seek.com.au/v2/jobs/search?keywords=.net&graduateSearch=false&location=1002&isAreaUnspecified=false&salaryRange=100000-999999&salaryType=annual&dateRange=31&worktype=244']
-    , ['BA perm', 'https://api.seek.com.au/v2/jobs/search?keywords=.net&graduateSearch=false&location=1002&isAreaUnspecified=false&salaryRange=100000-999999&salaryType=annual&dateRange=31&worktype=242']
+      ['BA all', 'https://api.seek.com.au/v2/jobs/search?keywords=BA&graduateSearch=false&location=1002&isAreaUnspecified=false&salaryRange=100000-999999&salaryType=annual&dateRange=31']
+    , ['BA contract', 'https://api.seek.com.au/v2/jobs/search?keywords=BA&graduateSearch=false&location=1002&isAreaUnspecified=false&salaryRange=100000-999999&salaryType=annual&dateRange=31&worktype=244']
+    , ['BA perm', 'https://api.seek.com.au/v2/jobs/search?keywords=BA&graduateSearch=false&location=1002&isAreaUnspecified=false&salaryRange=100000-999999&salaryType=annual&dateRange=31&worktype=242']
     , ['.net all', 'https://api.seek.com.au/v2/jobs/search?keywords=.net&graduateSearch=false&location=1002&isAreaUnspecified=false&salaryRange=100000-999999&salaryType=annual&dateRange=31']
     , ['.net contract', 'https://api.seek.com.au/v2/jobs/search?keywords=.net&graduateSearch=false&location=1002&isAreaUnspecified=false&salaryRange=100000-999999&salaryType=annual&dateRange=31&worktype=244']
     , ['.net perm', 'https://api.seek.com.au/v2/jobs/search?keywords=.net&graduateSearch=false&location=1002&isAreaUnspecified=false&salaryRange=100000-999999&salaryType=annual&dateRange=31&worktype=242']
