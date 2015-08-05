@@ -44,6 +44,6 @@ for url in urls:
     # Save found data
     scraperwiki.sqlite.save(unique_keys=['extracted_on','search'], data={
         "extracted_on": extractedOn,
-        "search": suburb,
+        "search": search,
 	"count": cnt
         })
